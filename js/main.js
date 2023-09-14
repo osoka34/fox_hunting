@@ -148,9 +148,15 @@ function diagElements(column_index, row_index) {
          umaxDownSteps = maxIndex - ((column_index >= row_index) ? column_index : row_index);
          umaxUpSteps = maxIndex - ((column_index >= row_index) ? row_index : column_index);
     } else {
-         umaxDownSteps = ((column_index >= row_index) ? row_index : column_index);
-         umaxUpSteps = ((column_index >= row_index) ? column_index : row_index);
+        if (column_index > row_index) {
+            umaxDownSteps = ((column_index > row_index) ? column_index : row_index);
+            umaxUpSteps = ((column_index >= row_index) ? row_index : column_index);
+        } else {
+             umaxDownSteps = ((column_index >= row_index) ? row_index : column_index);
+             umaxUpSteps = ((column_index > row_index) ? column_index : row_index);
+            }
     }
+
 
     console.log("восходящая: "+umaxDownSteps+" "+umaxUpSteps);
 
